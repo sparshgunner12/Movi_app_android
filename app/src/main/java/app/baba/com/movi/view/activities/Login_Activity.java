@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.baba.com.movi.R;
-import app.baba.com.movi.rest.Login;
 import app.baba.com.movi.rest.LoginResults;
+import app.baba.com.movi.rest.Rest;
 
 /**
  * Created by arsenal on 8/5/15.
@@ -52,11 +52,11 @@ public class Login_Activity extends ActionBarActivity {
             this.activity = activity;
         }
         protected Boolean doInBackground(String... params) {
-            Login abc=new Login();
+            Rest abc=new Rest();
             TextView b=(TextView)findViewById(R.id.editText);
             TextView c=(TextView)findViewById(R.id.editText2);
             try {
-                LoginResults loginwrapper = abc.loginDBApi.checkvalid(b.getText().toString(), c.getText().toString());
+                LoginResults loginwrapper = abc.RestApi.checkvalid(b.getText().toString(), c.getText().toString());
                 res = loginwrapper.getUserId();
                 if (res != "") {
                     ret = true;
@@ -65,33 +65,9 @@ public class Login_Activity extends ActionBarActivity {
                 }
                 Log.e("CheckLogin", res);
             }
-            catch(Exception e)
-            {
+            catch(Exception e) {
                 ret = false;
             }
-           /* new Callback<LoginResults>() {
-                @Override
-                public void success(LoginResults loginwrapper, Response response) {
-                    //convert list to cursor. more on this later
-                    res=loginwrapper.getUserId();
-                    if(res!="")
-                    {
-                        ret=true;
-                    }
-                    else
-                    {
-                        ret=false;
-                    }
-                    Log.e("CheckLogin",res);
-                    //mSearchViewAdapter.changeCursor(matrixCursor);
-                }
-
-                @Override
-                public void failure(RetrofitError error) {
-                    Log.e("CheckLogin", error.toString());
-                }
-            });
-            */
             return true;
         }
         @Override

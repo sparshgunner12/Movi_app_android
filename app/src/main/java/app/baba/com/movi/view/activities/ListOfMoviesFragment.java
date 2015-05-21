@@ -15,11 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import app.baba.com.movi.R;
-import app.baba.com.movi.rest.Login;
 import app.baba.com.movi.rest.MovieWrapper;
+import app.baba.com.movi.rest.Rest;
 
 /**
  * A placeholder fragment containing a simple view.
+ */
+/*
+This is similar to the udacity code.
  */
 public class ListOfMoviesFragment extends Fragment {
 
@@ -44,9 +47,9 @@ public class ListOfMoviesFragment extends Fragment {
     public class GetMovies extends AsyncTask<Void,Void,List<String>>{
         @Override
         public List<String> doInBackground(Void ... params){
-            Login abc=new Login();
+            Rest abc=new Rest();
             try {
-                List<MovieWrapper> movie_list = abc.loginDBApi.get_movie();
+                List<MovieWrapper> movie_list = abc.RestApi.get_movie();
                 List<String> res=new ArrayList<String>();
                 String x="";
                 for(MovieWrapper m:movie_list)

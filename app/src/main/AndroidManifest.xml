@@ -26,6 +26,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="view.activities.Login_Activity" />
         </activity>
+        <activity
+            android:name=".view.activities.ListOfHalls"
+            android:label="@string/title_activity_list_of_halls"
+            android:parentActivityName=".view.activities.ListOfMovies" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.baba.com.movi.view.activities.ListOfMovies" />
+        </activity>
     </application>
 
 </manifest>
